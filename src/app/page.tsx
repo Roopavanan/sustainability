@@ -20,6 +20,8 @@ import hand from "/public/img/hand.png";
 import studyImage from "/public/img/fee.png";
 import TeamSection from "./components/TeamSection";
 import Footer from "./components/Footer";
+import InfiniteSlider from "./components/InfiniteSlider";
+import KeyHighlights from "./components/KeyHighlights";
 
 const audience = [
   {
@@ -180,13 +182,17 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="relative flex flex-col items-center justify-center bg-[#1B360F] text-white text-center px-4 md:px-6 lg:px-8 pt-12">
+      <section className="relative flex flex-col items-center justify-center bg-[#1B360F] text-white text-center  pt-12 overflow-hidden">
+        {/* Background Text */}
+        
+
         {/* About the Course */}
         <motion.div
-          className="relative border border-[#90C645] rounded-xl p-6 md:p-10 w-full max-w-3xl h-auto"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          className="relative border border-[#90C645] rounded-[40px] p-6 md:p-10 w-full max-w-5xl h-auto px-4 md:px-6 lg:px-8"
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 50, scale: 0.95 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#90C645]">
             About The Course
@@ -201,88 +207,39 @@ export default function Home() {
         {/* 9 Immersive Modules */}
         <motion.h2
           className="text-xl sm:text-2xl md:text-5xl font-bold text-[#90C645] pt-12 pb-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
           transition={{ duration: 1, delay: 0.3 }}
+          viewport={{ once: true }}
         >
           9 Immersive Modules
         </motion.h2>
 
         <motion.p
           className="mt-2 max-w-3xl text-base sm:text-lg md:text-xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
           transition={{ duration: 1, delay: 0.6 }}
+          viewport={{ once: true }}
         >
           Join us at Yuvabe, Auroville, where innovation meets sustainability,
           and gain the skills, knowledge, and network to drive a positive impact
           in your career and beyond.
         </motion.p>
-      </section>
 
-      <section className="py-12 px-6 md:px-12 lg:px-20 text-center bg-gradient-to-b from-white to-green-50">
-        {/* Title */}
+        <InfiniteSlider />
         <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          className="absolute bottom-[-10%] left-1/2 transform -translate-x-1/2 text-[60px] md:text-[140px] font-extrabold text-white opacity-10 whitespace-nowrap"
+          whileInView={{ opacity: 0.1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-2xl md:text-3xl lg:text-5xl font-bold text-[#719C35]"
         >
-          Key Highlights
+          Sustainability
         </motion.h2>
-
-        {/* Grid Section */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-center">
-          {/* Left Side Highlights */}
-          <div className="flex flex-col gap-4">
-            {highlights.slice(0, 3).map((text, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="p-4 rounded-xl border border-green/40 bg-[#90C645] bg-opacity-20 backdrop-blur-lg shadow-lg px-16 "
-              >
-                <p className="text-gray-800 text-sm">{text}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Center Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <Image
-              src={plantImage}
-              alt="Growing plant"
-              width={250}
-              height={250}
-              className="mx-auto"
-            />
-          </motion.div>
-
-          {/* Right Side Highlights */}
-          <div className="flex flex-col gap-4">
-            {highlights.slice(3).map((text, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="p-4 rounded-xl border border-white/40 bg-[#90C645] bg-opacity-20 backdrop-blur-md shadow-lg "
-              >
-                <p className="text-gray-800 text-sm">{text}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </section>
+
+      {/* Key Highlights */}
+      <KeyHighlights />
 
       {/* Evolve section */}
       <section className="relative bg-[#1B360F] text-white text-center px-4 md:px-6 lg:px-8 pt-12 pb-16">
@@ -731,61 +688,59 @@ export default function Home() {
 
       {/* Post Opportunities */}
       <section className="relative py-16 px-6 bg-[#1B360F] text-center text-white overflow-hidden">
-      {/* Background Text */}
-      <motion.h2
-        className="absolute bottom-[-8%] left-1/2 transform -translate-x-1/2 text-[60px] md:text-[140px] font-extrabold text-white opacity-10 whitespace-nowrap"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        Yuvabe Education
-      </motion.h2>
+        {/* Background Text */}
+        <motion.h2
+          className="absolute bottom-[-8%] left-1/2 transform -translate-x-1/2 text-[60px] md:text-[140px] font-extrabold text-white opacity-10 whitespace-nowrap"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          Yuvabe Education
+        </motion.h2>
 
-      {/* Heading */}
-      <motion.h2
-        className="text-3xl md:text-6xl font-semibold text-[#90C645]"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}  
-        transition={{ duration: 0.8 }}
-      >
-        Post-Course Opportunities
-      </motion.h2>
+        {/* Heading */}
+        <motion.h2
+          className="text-3xl md:text-6xl font-semibold text-[#90C645]"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          Post-Course Opportunities
+        </motion.h2>
 
-      {/* Opportunities List */}
-      <div className="mt-10 space-y-10 max-w-2xl mx-auto mb-10">
-        {[
-          {
-            id: "01",
-            text: "Paid internships (3-6 months) for the top 5 students at Yuvabe."
-          },
-          {
-            id: "02",
-            text: "Access to an alumni network for ongoing learning and collaboration."
-          },
-          {
-            id: "03",
-            text: "Opportunities for advanced courses and certifications."
-          }
-        ].map((item, index) => (
-          <motion.div
-            key={item.id}
-            className="flex items-center space-x-6"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.3 }}
-          >
-            {/* Number with Gradient */}
-            <span
-              className="text-[120px] font-extrabold bg-gradient-to-br from-[#90C645] to-[#507D2A] text-transparent bg-clip-text"
+        {/* Opportunities List */}
+        <div className="mt-10 space-y-10 max-w-2xl mx-auto mb-10">
+          {[
+            {
+              id: "01",
+              text: "Paid internships (3-6 months) for the top 5 students at Yuvabe."
+            },
+            {
+              id: "02",
+              text: "Access to an alumni network for ongoing learning and collaboration."
+            },
+            {
+              id: "03",
+              text: "Opportunities for advanced courses and certifications."
+            }
+          ].map((item, index) => (
+            <motion.div
+              key={item.id}
+              className="flex items-center space-x-6"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.3 }}
             >
-              {item.id}
-            </span>
-            {/* Description */}
-            <p className="text-lg text-left font-medium">{item.text}</p>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+              {/* Number with Gradient */}
+              <span className="text-[120px] font-extrabold bg-gradient-to-br from-[#90C645] to-[#507D2A] text-transparent bg-clip-text">
+                {item.id}
+              </span>
+              {/* Description */}
+              <p className="text-lg text-left font-medium">{item.text}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
       <FaqSection />
       <TeamSection />

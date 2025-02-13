@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-slide {
+    display: flex;
+    
+    animation: slide 25s linear infinite;
+  }
+  
