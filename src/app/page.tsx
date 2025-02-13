@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import bgImage from "/public/img/bg.png";
 import FaqSection from "./components/FaqSection";
-import plantImage from "/public/img/plant.png";
 import hand from "/public/img/hand.png";
 import studyImage from "/public/img/fee.png";
 import TeamSection from "./components/TeamSection";
@@ -46,15 +45,7 @@ const audience = [
   }
 ];
 
-const highlights = [
-  "In-person sessions with industry experts.",
-  "Immersive learning in Auroville's unique, sustainable ecosystem.",
-  "Hands-on projects and real-world case studies.",
-  "Grow with Yuvabe’s signature Evolve Program.",
-  "Paid (3-6 months) Internships with Yuvabe for the top 5 students of the course.",
-  "Certification recognized by universities and employers.",
-  "Affordable and inclusive, with scholarships available."
-];
+
 
 const features = [
   {
